@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Document metadata and configuration -->
+    <meta charset="UTF-8">                                    <!-- Character encoding for proper text display -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Responsive viewport settings -->
+    <title>CSS Framework Demo</title>                         <!-- Page title shown in browser tab -->
+    <link rel="stylesheet" href="assets/css/framework.css">              <!-- Link to our custom CSS framework -->
+
+
+
+</head>
+<body>
+    <!-- ========================================
+         NAVIGATION SECTION
+         Purpose: Site navigation and branding
+         ======================================== -->
+    <nav class="navbar">                                      <!-- Main navigation container -->
+        <div class="container d-flex justify-between align-center">  <!-- Container with flexbox layout -->
+            <a href="#" class="navbar-brand">Framework</a>    <!-- Brand/logo link -->
+            <ul class="navbar-nav">                           <!-- Navigation menu list -->
+                <li><a href="#" class="nav-link">Home</a></li>        <!-- Home page link -->
+                <li><a href="#" class="nav-link">About</a></li>       <!-- About page link -->
+                <li><a href="#" class="nav-link">Services</a></li>    <!-- Services page link -->
+                <li><a href="#" class="nav-link">Contact</a></li>     <!-- Contact page link -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         HERO SECTION
+         Purpose: Main page introduction and call-to-action
+         ======================================== -->
+    <section class="container mt-5">                          <!-- Hero section with top margin -->
+        <div class="text-center mb-5">                        <!-- Centered content with bottom margin -->
+            <h1>Welcome to Our Spofity</h1>              <!-- Main page heading -->
+            <p>A lightweight, responsive framework for modern web development</p>  <!-- Descriptive subtitle -->
+            <button class="btn btn-primary btn-lg">Get Started</button>    <!-- Primary call-to-action button -->
+            <button class="btn btn-outline btn-lg">Learn More</button>     <!-- Secondary action button -->
+        </div>
+    </section>
+
+    <!-- ========================================
+         GRID SYSTEM DEMONSTRATION
+         Purpose: Show how the grid system works with cards
+         ======================================== -->
+    <section class="container mb-5">                          <!-- Grid demo section -->
+        <h2 class="text-center mb-4">Grid System</h2>         <!-- Section heading -->
+        <div class="row">                                      <!-- Flexbox row container -->
+            <div class="col-4">                                <!-- First column - 1/3 width -->
+                <div class="card">                             <!-- Card component for content -->
+                    <div class="card-body">                    <!-- Card content area -->
+                        <h3 class="card-title">Column 1</h3>   <!-- Card heading -->
+                        <p>This is a 4-column width section demonstrating our flexible grid system.</p>  <!-- Card description -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">                                <!-- Second column - 1/3 width -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Column 2</h3>
+                        <p>Each column automatically adjusts to mobile screens for responsive design.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">                                <!-- Third column - 1/3 width -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Column 3</h3>
+                        <p>Clean, modern styling with consistent spacing and typography.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         BUTTON SHOWCASE
+         Purpose: Display all button variants and sizes
+         ======================================== -->
+    <section class="container mb-5">                          <!-- Button showcase section -->
+        <h2 class="text-center mb-4">Button Components</h2>   <!-- Section heading -->
+        <div class="text-center">                             <!-- Center-aligned button row -->
+            <button class="btn btn-primary">Primary</button>   <!-- Blue primary button -->
+            <button class="btn btn-secondary">Secondary</button>  <!-- Gray secondary button -->
+            <button class="btn btn-success">Success</button>   <!-- Green success button -->
+            <button class="btn btn-danger">Danger</button>     <!-- Red danger button -->
+            <button class="btn btn-outline">Outline</button>   <!-- Outline style button -->
+        </div>
+        <div class="text-center mt-3">                        <!-- Second row showing size variants -->
+            <button class="btn btn-primary btn-sm">Small</button>     <!-- Small size button -->
+            <button class="btn btn-primary">Regular</button>          <!-- Regular size button -->
+            <button class="btn btn-primary btn-lg">Large</button>     <!-- Large size button -->
+        </div>
+    </section>
+
+    <!-- ========================================
+         FORM AND ALERT EXAMPLES
+         Purpose: Demonstrate form styling and alert components
+         ======================================== -->
+    <section class="container mb-5">                          <!-- Form and alerts section -->
+        <div class="row">                                      <!-- Two-column layout -->
+            <div class="col-6">                                <!-- Left column - contact form -->
+                <div class="card">                             <!-- Card wrapper for form -->
+                    <div class="card-header">                  <!-- Card header section -->
+                        <h3 class="card-title">Contact Form</h3>  <!-- Form title -->
+                    </div>
+                    <div class="card-body">                    <!-- Card body with form -->
+                        <form>                                 <!-- Contact form element -->
+                            <div class="form-group">           <!-- Name input group -->
+                                <label class="form-label" for="name">Full Name</label>  <!-- Input label -->
+                                <input type="text" id="name" class="form-control" placeholder="Enter your name">  <!-- Text input -->
+                            </div>
+                            <div class="form-group">           <!-- Email input group -->
+                                <label class="form-label" for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                                <div class="form-text">We'll never share your email with anyone else.</div>  <!-- Help text -->
+                            </div>
+                            <div class="form-group">           <!-- Message textarea group -->
+                                <label class="form-label" for="message">Message</label>
+                                <textarea id="message" class="form-control" rows="4" placeholder="Your message here..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>  <!-- Submit button -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">                                <!-- Right column - alert examples -->
+                <h3>Alert Components</h3>                      <!-- Alerts section heading -->
+                <div class="alert alert-info">                 <!-- Info alert - blue styling -->
+                    <strong>Info:</strong> This is an informational alert message.
+                </div>
+                <div class="alert alert-success">              <!-- Success alert - green styling -->
+                    <strong>Success:</strong> Your form has been submitted successfully!
+                </div>
+                <div class="alert alert-warning">              <!-- Warning alert - yellow styling -->
+                    <strong>Warning:</strong> Please check your input fields.
+                </div>
+                <div class="alert alert-danger">               <!-- Error alert - red styling -->
+                    <strong>Error:</strong> Something went wrong. Please try again.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FEATURES SECTION
+         Purpose: Highlight framework capabilities using grid and cards
+         ======================================== -->
+    <section class="container mb-5">                          <!-- Features showcase section -->
+        <h2 class="text-center mb-4">Framework Features</h2>  <!-- Section heading -->
+        <div class="row">                                      <!-- Four-column grid layout -->
+            <div class="col-3">                                <!-- First feature - 1/4 width -->
+                <div class="card text-center">                 <!-- Centered card content -->
+                    <div class="card-body">
+                        <h4 class="card-title">Responsive</h4>  <!-- Feature title -->
+                        <p>Mobile-first design that works on all devices</p>  <!-- Feature description -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">                                <!-- Second feature -->
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4 class="card-title">Lightweight</h4>
+                        <p>Minimal CSS for fast loading times</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">                                <!-- Third feature -->
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4 class="card-title">Modern</h4>
+                        <p>Clean, contemporary design patterns</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">                                <!-- Fourth feature -->
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h4 class="card-title">Flexible</h4>
+                        <p>Easy to customize and extend</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER SECTION
+         Purpose: Page footer with copyright information
+         ======================================== -->
+    <footer class="mt-5 p-4" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6;">  <!-- Footer with styling -->
+        <div class="container text-center">                   <!-- Centered footer content -->
+            <p>&copy; 2025 CSS Framework. Built with modern web standards.</p>  <!-- Copyright notice -->
+        </div>
+    </footer>
+</body>
+</html>

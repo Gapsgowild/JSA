@@ -1,0 +1,469 @@
+/* ========================================
+   CSS FRAMEWORK - COMPREHENSIVE DOCUMENTATION
+   ======================================== */
+
+/* ========================================
+   RESET AND BASE STYLES
+   Purpose: Normalize browser defaults and set consistent foundation
+   ======================================== */
+* {
+  margin: 0; /* Remove default margins from all elements */
+  padding: 0; /* Remove default padding from all elements */
+  box-sizing: border-box; /* Include padding and border in element width/height calculations */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* System font stack for optimal performance */
+  line-height: 1.6; /* Comfortable reading line height */
+  color: #333; /* Default text color - dark gray for good contrast */
+  background-color: #fff; /* Default background color - white */
+}
+
+/* ========================================
+   CONTAINER SYSTEM
+   Purpose: Control content width and provide consistent horizontal spacing
+   ======================================== */
+.container {
+  max-width: 1200px; /* Maximum width for large screens - prevents content from stretching too wide */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 0 20px; /* Add horizontal padding for breathing room */
+}
+
+.container-fluid {
+  width: 100%; /* Full width container - spans entire viewport */
+  padding: 0 20px; /* Consistent horizontal padding */
+}
+
+/* ========================================
+   GRID SYSTEM
+   Purpose: Create flexible, responsive layouts using flexbox
+   ======================================== */
+.row {
+  display: flex; /* Use flexbox for horizontal layout */
+  flex-wrap: wrap; /* Allow columns to wrap to new lines on smaller screens */
+  margin: 0 -15px; /* Negative margin to offset column padding */
+}
+
+.col {
+  flex: 1; /* Equal width columns that grow to fill available space */
+  padding: 0 15px; /* Horizontal padding creates gutters between columns */
+}
+
+/* Fixed width columns based on 12-column grid system */
+.col-1 {
+  flex: 0 0 8.333333%;
+} /* 1/12 of container width */
+.col-2 {
+  flex: 0 0 16.666667%;
+} /* 2/12 of container width */
+.col-3 {
+  flex: 0 0 25%;
+} /* 3/12 of container width (quarter) */
+.col-4 {
+  flex: 0 0 33.333333%;
+} /* 4/12 of container width (third) */
+.col-6 {
+  flex: 0 0 50%;
+} /* 6/12 of container width (half) */
+.col-8 {
+  flex: 0 0 66.666667%;
+} /* 8/12 of container width (two-thirds) */
+.col-12 {
+  flex: 0 0 100%;
+} /* 12/12 of container width (full width) */
+
+/* ========================================
+   TYPOGRAPHY SYSTEM
+   Purpose: Consistent text styling and hierarchy
+   ======================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5em; /* Consistent bottom spacing for all headings */
+  font-weight: 600; /* Semi-bold weight for better hierarchy */
+  line-height: 1.2; /* Tighter line height for headings */
+}
+
+/* Heading size scale - decreases proportionally */
+h1 {
+  font-size: 2.5rem;
+} /* Largest heading - main page titles */
+h2 {
+  font-size: 2rem;
+} /* Section headings */
+h3 {
+  font-size: 1.75rem;
+} /* Subsection headings */
+h4 {
+  font-size: 1.5rem;
+} /* Minor headings */
+h5 {
+  font-size: 1.25rem;
+} /* Small headings */
+h6 {
+  font-size: 1rem;
+} /* Smallest heading - same as body text */
+
+p {
+  margin-bottom: 1rem; /* Consistent spacing between paragraphs */
+}
+
+/* ========================================
+   BUTTON SYSTEM
+   Purpose: Interactive elements with consistent styling and behavior
+   ======================================== */
+.btn {
+  display: inline-block; /* Allows width/height while staying inline */
+  padding: 12px 24px; /* Comfortable click target size */
+  font-size: 16px; /* Readable text size */
+  font-weight: 500; /* Medium weight for emphasis */
+  text-align: center; /* Center button text */
+  text-decoration: none; /* Remove underline from link buttons */
+  border: none; /* Remove default button border */
+  border-radius: 6px; /* Rounded corners for modern look */
+  cursor: pointer; /* Show pointer cursor on hover */
+  transition: all 0.2s ease; /* Smooth animation for hover effects */
+  line-height: 1; /* Prevent text from affecting button height */
+}
+
+/* Hover effect for all buttons - subtle lift and shadow */
+.btn:hover {
+  transform: translateY(-1px); /* Slight upward movement */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Drop shadow for depth */
+}
+
+/* Button color variants - each serves different semantic purposes */
+.btn-primary {
+  background-color: #007bff; /* Blue - primary actions */
+  color: white; /* White text for contrast */
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+} /* Darker blue on hover */
+
+.btn-secondary {
+  background-color: #6c757d; /* Gray - secondary actions */
+  color: white;
+}
+.btn-secondary:hover {
+  background-color: #545b62;
+}
+
+.btn-success {
+  background-color: #28a745; /* Green - positive actions (save, submit) */
+  color: white;
+}
+.btn-success:hover {
+  background-color: #1e7e34;
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Red - destructive actions (delete, cancel) */
+  color: white;
+}
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-outline {
+  background-color: transparent; /* Transparent background */
+  border: 2px solid #007bff; /* Colored border instead of background */
+  color: #007bff; /* Text matches border color */
+}
+.btn-outline:hover {
+  background-color: #007bff; /* Fill background on hover */
+  color: white; /* Invert text color */
+}
+
+/* Button size variants */
+.btn-sm {
+  padding: 8px 16px; /* Smaller padding for compact buttons */
+  font-size: 14px; /* Smaller text */
+}
+
+.btn-lg {
+  padding: 16px 32px; /* Larger padding for prominent buttons */
+  font-size: 18px; /* Larger text */
+}
+
+/* ========================================
+   CARD COMPONENT
+   Purpose: Container for grouped content with consistent styling
+   ======================================== */
+.card {
+  background: white; /* White background for content separation */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  overflow: hidden; /* Prevent content from breaking border radius */
+  margin-bottom: 20px; /* Space between multiple cards */
+}
+
+.card-header {
+  padding: 20px; /* Generous padding for header content */
+  background-color: #f8f9fa; /* Light gray background to distinguish from body */
+  border-bottom: 1px solid #dee2e6; /* Subtle border separation */
+}
+
+.card-body {
+  padding: 20px; /* Main content area padding */
+}
+
+.card-footer {
+  padding: 20px; /* Footer padding matches header */
+  background-color: #f8f9fa; /* Same background as header */
+  border-top: 1px solid #dee2e6; /* Top border for separation */
+}
+
+.card-title {
+  margin-bottom: 10px; /* Space below card titles */
+  font-size: 1.25rem; /* Slightly larger than body text */
+  font-weight: 600; /* Semi-bold for emphasis */
+}
+
+/* ========================================
+   FORM ELEMENTS
+   Purpose: Consistent styling for user input elements
+   ======================================== */
+.form-group {
+  margin-bottom: 20px; /* Space between form fields */
+}
+
+.form-label {
+  display: block; /* Full width for proper spacing */
+  margin-bottom: 5px; /* Small gap between label and input */
+  font-weight: 500; /* Medium weight for readability */
+  color: #333; /* Dark color for good contrast */
+}
+
+.form-control {
+  width: 100%; /* Full width of container */
+  padding: 12px; /* Comfortable input padding */
+  font-size: 16px; /* Prevent zoom on mobile devices */
+  border: 2px solid #dee2e6; /* Visible border for input boundaries */
+  border-radius: 6px; /* Rounded corners to match buttons */
+  transition: border-color 0.2s ease; /* Smooth border color change */
+}
+
+.form-control:focus {
+  outline: none; /* Remove default browser outline */
+  border-color: #007bff; /* Blue border when focused */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1); /* Subtle glow effect */
+}
+
+.form-control.error {
+  border-color: #dc3545; /* Red border for validation errors */
+}
+
+.form-text {
+  font-size: 14px; /* Smaller text for help/hint text */
+  color: #6c757d; /* Muted color to de-emphasize */
+  margin-top: 5px; /* Small gap above help text */
+}
+
+/* ========================================
+   ALERT COMPONENT
+   Purpose: Display status messages and notifications
+   ======================================== */
+.alert {
+  padding: 15px 20px; /* Comfortable padding for message content */
+  margin-bottom: 20px; /* Space between multiple alerts */
+  border-radius: 6px; /* Rounded corners */
+  border-left: 4px solid; /* Colored left border for visual emphasis */
+}
+
+/* Alert color variants - each conveys different message types */
+.alert-info {
+  background-color: #d1ecf1; /* Light blue background */
+  border-color: #17a2b8; /* Blue left border */
+  color: #0c5460; /* Dark blue text */
+}
+
+.alert-success {
+  background-color: #d4edda; /* Light green background */
+  border-color: #28a745; /* Green left border */
+  color: #155724; /* Dark green text */
+}
+
+.alert-warning {
+  background-color: #fff3cd; /* Light yellow background */
+  border-color: #ffc107; /* Yellow left border */
+  color: #856404; /* Dark yellow/brown text */
+}
+
+.alert-danger {
+  background-color: #f8d7da; /* Light red background */
+  border-color: #dc3545; /* Red left border */
+  color: #721c24; /* Dark red text */
+}
+
+/* ========================================
+   NAVIGATION COMPONENT
+   Purpose: Site navigation with consistent styling
+   ======================================== */
+.navbar {
+  background-color: #fff; /* White background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+  padding: 15px 0; /* Vertical padding for navbar height */
+}
+
+.navbar-brand {
+  font-size: 1.5rem; /* Larger text for brand/logo */
+  font-weight: 700; /* Bold weight for emphasis */
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Dark color for contrast */
+}
+
+.navbar-nav {
+  display: flex; /* Horizontal layout for navigation items */
+  list-style: none; /* Remove bullet points */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  gap: 30px; /* Space between navigation items */
+}
+
+.nav-link {
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Dark color for readability */
+  font-weight: 500; /* Medium weight */
+  transition: color 0.2s ease; /* Smooth color transition */
+}
+
+.nav-link:hover {
+  color: #007bff; /* Blue color on hover */
+}
+
+/* ========================================
+   UTILITY CLASSES
+   Purpose: Quick styling helpers for common needs
+   ======================================== */
+
+/* Text alignment utilities */
+.text-center {
+  text-align: center;
+} /* Center align text */
+.text-left {
+  text-align: left;
+} /* Left align text */
+.text-right {
+  text-align: right;
+} /* Right align text */
+
+/* Margin top utilities - based on rem scale */
+.mt-1 {
+  margin-top: 0.25rem;
+} /* 4px top margin */
+.mt-2 {
+  margin-top: 0.5rem;
+} /* 8px top margin */
+.mt-3 {
+  margin-top: 1rem;
+} /* 16px top margin */
+.mt-4 {
+  margin-top: 1.5rem;
+} /* 24px top margin */
+.mt-5 {
+  margin-top: 3rem;
+} /* 48px top margin */
+
+/* Margin bottom utilities */
+.mb-1 {
+  margin-bottom: 0.25rem;
+} /* 4px bottom margin */
+.mb-2 {
+  margin-bottom: 0.5rem;
+} /* 8px bottom margin */
+.mb-3 {
+  margin-bottom: 1rem;
+} /* 16px bottom margin */
+.mb-4 {
+  margin-bottom: 1.5rem;
+} /* 24px bottom margin */
+.mb-5 {
+  margin-bottom: 3rem;
+} /* 48px bottom margin */
+
+/* Padding utilities */
+.p-1 {
+  padding: 0.25rem;
+} /* 4px padding all sides */
+.p-2 {
+  padding: 0.5rem;
+} /* 8px padding all sides */
+.p-3 {
+  padding: 1rem;
+} /* 16px padding all sides */
+.p-4 {
+  padding: 1.5rem;
+} /* 24px padding all sides */
+.p-5 {
+  padding: 3rem;
+} /* 48px padding all sides */
+
+/* Display utilities */
+.d-block {
+  display: block;
+} /* Block level element */
+.d-inline {
+  display: inline;
+} /* Inline element */
+.d-inline-block {
+  display: inline-block;
+} /* Inline-block element */
+.d-flex {
+  display: flex;
+} /* Flexbox container */
+.d-none {
+  display: none;
+} /* Hide element */
+
+/* Flexbox alignment utilities */
+.justify-center {
+  justify-content: center;
+} /* Center items horizontally */
+.justify-between {
+  justify-content: space-between;
+} /* Space items apart */
+.align-center {
+  align-items: center;
+} /* Center items vertically */
+
+/* ========================================
+   RESPONSIVE DESIGN
+   Purpose: Adapt layout for different screen sizes
+   ======================================== */
+@media (max-width: 768px) {
+  /* Container adjustments for mobile */
+  .container {
+    padding: 0 15px; /* Reduce padding on smaller screens */
+  }
+
+  /* Grid system - all columns become full width on mobile */
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-6,
+  .col-8 {
+    flex: 0 0 100%; /* Full width for better mobile experience */
+  }
+
+  /* Navigation - stack vertically on mobile */
+  .navbar-nav {
+    flex-direction: column; /* Vertical layout */
+    gap: 15px; /* Reduced gap for mobile */
+  }
+
+  /* Typography - reduce heading sizes for mobile */
+  h1 {
+    font-size: 2rem;
+  } /* Smaller h1 for mobile screens */
+  h2 {
+    font-size: 1.75rem;
+  } /* Smaller h2 for mobile screens */
+  h3 {
+    font-size: 1.5rem;
+  } /* Smaller h3 for mobile screens */
+}
