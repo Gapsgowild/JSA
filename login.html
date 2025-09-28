@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone - Login</title>
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231DB954'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 14.5c-.17 0-.33-.09-.42-.24-1.15-1.96-2.91-3.35-5.06-4.02-.98-.31-2.01-.47-3.05-.47-.63 0-1.26.06-1.88.18-.2.04-.4-.09-.44-.29s.09-.4.29-.44c.68-.13 1.37-.2 2.06-.2 1.13 0 2.25.17 3.32.51 2.37.75 4.35 2.3 5.64 4.47.14.23.06.53-.17.67-.08.04-.16.06-.24.06-.01-.01-.03-.01-.05-.02zm1.15-2.7c-.2 0-.39-.1-.5-.28-1.43-2.35-3.6-4.02-6.28-4.82-1.2-.36-2.45-.54-3.72-.54-.75 0-1.49.07-2.22.21-.24.05-.48-.11-.53-.35s.11-.48.35-.53c.8-.15 1.61-.23 2.43-.23 1.38 0 2.75.2 4.06.59 2.93.88 5.29 2.7 6.84 5.27.17.28.08.65-.2.82-.1.06-.21.09-.32.09l.09-.23zm1.15-2.95c-.23 0-.45-.12-.57-.33-1.65-2.83-4.2-4.82-7.39-5.75-1.4-.41-2.85-.62-4.32-.62-.87 0-1.73.08-2.58.24-.28.05-.55-.13-.6-.41s.13-.55.41-.6c.93-.17 1.87-.26 2.82-.26 1.6 0 3.19.23 4.72.68 3.48 1.02 6.26 3.18 8.06 6.26.2.33.09.76-.24.96-.11.07-.24.10-.36.10l.05-.27z'/></svg>">
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="#1DB954">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 14.5c-.17 0-.33-.09-.42-.24-1.15-1.96-2.91-3.35-5.06-4.02-.98-.31-2.01-.47-3.05-.47-.63 0-1.26.06-1.88.18-.2.04-.4-.09-.44-.29s.09-.4.29-.44c.68-.13 1.37-.2 2.06-.2 1.13 0 2.25.17 3.32.51 2.37.75 4.35 2.3 5.64 4.47.14.23.06.53-.17.67-.08.04-.16.06-.24.06-.01-.01-.03-.01-.05-.02zm1.15-2.7c-.2 0-.39-.1-.5-.28-1.43-2.35-3.6-4.02-6.28-4.82-1.2-.36-2.45-.54-3.72-.54-.75 0-1.49.07-2.22.21-.24.05-.48-.11-.53-.35s.11-.48.35-.53c.8-.15 1.61-.23 2.43-.23 1.38 0 2.75.2 4.06.59 2.93.88 5.29 2.7 6.84 5.27.17.28.08.65-.2.82-.1.06-.21.09-.32.09l.09-.23zm1.15-2.95c-.23 0-.45-.12-.57-.33-1.65-2.83-4.2-4.82-7.39-5.75-1.4-.41-2.85-.62-4.32-.62-.87 0-1.73.08-2.58.24-.28.05-.55-.13-.6-.41s.13-.55.41-.6c.93-.17 1.87-.26 2.82-.26 1.6 0 3.19.23 4.72.68 3.48 1.02 6.26 3.18 8.06 6.26.2.33.09.76-.24.96-.11.07-.24.10-.36.10l.05-.27z"/>
+                </svg>
+                <h1>Spotify Clone</h1>
+            </div>
+            
+            <div class="form-container">
+                <div class="form-toggle">
+                    <button id="loginTab" class="tab-button active">Log In</button>
+                    <button id="signupTab" class="tab-button">Sign Up</button>
+                </div>
+                
+                <form id="loginForm" class="form active">
+                    <div class="input-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Log In</button>
+                    <div class="forgot-password">
+                        <a href="#" id="forgotPassword">Forgot your password?</a>
+                    </div>
+                </form>
+                
+                <form id="signupForm" class="form">
+                    <div class="input-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div id="resetModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Reset Password</h2>
+            <p>Your password has been reset. Please create a new password.</p>
+            <form id="resetForm">
+                <div class="input-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                <button type="submit" class="submit-btn">Set New Password</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="auth.js"></script>
+    <script src="assets/js/login.js"></script>
+</body>
+</html>
