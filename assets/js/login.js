@@ -1,215 +1,167 @@
-class AuthManager {
-  constructor() {
-    this.init()
-    this.checkPasswordExpiry()
-  }
+// Check if user is already logged in
+if (localStorage.getItem("spotifyUser")) {
+  window.location.href = "/index.html"
+}
 
-  init() {
-    // Tab switching
-    document.getElementById("loginTab").addEventListener("click", () => this.switchTab("login"))
-    document.getElementById("signupTab").addEventListener("click", () => this.switchTab("signup"))
+// Check and reset passwords daily
+function checkPasswordReset() {
+  const lastReset = localStorage.getItem("lastPasswordReset")
+  const today = new Date().toDateString()
 
-    // Form submissions
-    document.getElementById("loginForm").addEventListener("submit", (e) => this.handleLogin(e))
-    document.getElementById("signupForm").addEventListener("submit", (e) => this.handleSignup(e))
-    document.getElementById("resetForm").addEventListener("submit", (e) => this.handlePasswordReset(e))
-
-    // Forgot password
-    document.getElementById("forgotPassword").addEventListener("click", (e) => this.showResetModal(e))
-
-    // Modal close
-    document.querySelector(".close").addEventListener("click", () => this.closeModal())
-    window.addEventListener("click", (e) => {
-      if (e.target === document.getElementById("resetModal")) {
-        this.closeModal()
-      }
-    })
-  }
-
-  switchTab(tab) {
-    const loginTab = document.getElementById("loginTab")
-    const signupTab = document.getElementById("signupTab")
-    const loginForm = document.getElementById("loginForm")
-    const signupForm = document.getElementById("signupForm")
-
-    if (tab === "login") {
-      loginTab.classList.add("active")
-      signupTab.classList.remove("active")
-      loginForm.classList.add("active")
-      signupForm.classList.remove("active")
-    } else {
-      signupTab.classList.add("active")
-      loginTab.classList.remove("active")
-      signupForm.classList.add("active")
-      loginForm.classList.remove("active")
-    }
-  }
-
-  handleLogin(e) {
-    e.preventDefault()
-    const email = document.getElementById("loginEmail").value
-    const password = document.getElementById("loginPassword").value
-
+  if (lastReset !== today) {
+    // Reset all passwords
     const users = JSON.parse(localStorage.getItem("spotifyUsers") || "{}")
-
-    if (users[email] && users[email].password === password) {
-      // Set login session
-      localStorage.setItem("currentUser", email)
-      localStorage.setItem("loginTime", Date.now().toString())
-
-      this.showMessage("Login successful! Redirecting...", "success")
-      setTimeout(() => {
-        window.location.href = "index.html"
-      }, 1500)
-    } else {
-      this.showMessage("Invalid email or password", "error")
-    }
-  }
-
-  handleSignup(e) {
-    e.preventDefault()
-    const email = document.getElementById("signupEmail").value
-    const password = document.getElementById("signupPassword").value
-    const confirmPassword = document.getElementById("confirmPassword").value
-
-    if (password !== confirmPassword) {
-      this.showMessage("Passwords do not match", "error")
-      return
-    }
-
-    if (password.length < 6) {
-      this.showMessage("Password must be at least 6 characters long", "error")
-      return
-    }
-
-    const users = JSON.parse(localStorage.getItem("spotifyUsers") || "{}")
-
-    if (users[email]) {
-      this.showMessage("Account already exists with this email", "error")
-      return
-    }
-
-    // Save user
-    users[email] = {
-      password: password,
-      createdAt: Date.now(),
+    for (const email in users) {
+      delete users[email].password
     }
     localStorage.setItem("spotifyUsers", JSON.stringify(users))
-
-    this.showMessage("Account created successfully! You can now log in.", "success")
-    this.switchTab("login")
-
-    // Clear signup form
-    document.getElementById("signupForm").reset()
-  }
-
-  showResetModal(e) {
-    e.preventDefault()
-    document.getElementById("resetModal").style.display = "block"
-  }
-
-  closeModal() {
-    document.getElementById("resetModal").style.display = "none"
-  }
-
-  handlePasswordReset(e) {
-    e.preventDefault()
-    const newPassword = document.getElementById("newPassword").value
-    const email = document.getElementById("loginEmail").value
-
-    if (!email) {
-      this.showMessage("Please enter your email in the login form first", "error")
-      this.closeModal()
-      return
-    }
-
-    if (newPassword.length < 6) {
-      this.showMessage("Password must be at least 6 characters long", "error")
-      return
-    }
-
-    const users = JSON.parse(localStorage.getItem("spotifyUsers") || "{}")
-
-    if (users[email]) {
-      users[email].password = newPassword
-      localStorage.setItem("spotifyUsers", JSON.stringify(users))
-      this.showMessage("Password reset successfully!", "success")
-      this.closeModal()
-      document.getElementById("resetForm").reset()
-    } else {
-      this.showMessage("No account found with this email", "error")
-    }
-  }
-
-  checkPasswordExpiry() {
-    const lastReset = localStorage.getItem("lastPasswordReset")
-    const today = new Date().toDateString()
-
-    if (lastReset !== today) {
-      // Reset all passwords daily
-      const users = JSON.parse(localStorage.getItem("spotifyUsers") || "{}")
-      Object.keys(users).forEach((email) => {
-        users[email].password = this.generateRandomPassword()
-      })
-      localStorage.setItem("spotifyUsers", JSON.stringify(users))
-      localStorage.setItem("lastPasswordReset", today)
-
-      // Clear current session
-      localStorage.removeItem("currentUser")
-      localStorage.removeItem("loginTime")
-    }
-  }
-
-  generateRandomPassword() {
-    return Math.random().toString(36).slice(-8)
-  }
-
-  showMessage(message, type) {
-    // Remove existing messages
-    const existingMessage = document.querySelector(".message")
-    if (existingMessage) {
-      existingMessage.remove()
-    }
-
-    const messageDiv = document.createElement("div")
-    messageDiv.className = `message ${type}`
-    messageDiv.textContent = message
-    messageDiv.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            border-radius: 10px;
-            color: white;
-            font-weight: 600;
-            z-index: 1000;
-            animation: slideIn 0.3s ease;
-            background: ${type === "success" ? "#1DB954" : "#e22134"};
-        `
-
-    document.body.appendChild(messageDiv)
-
-    setTimeout(() => {
-      messageDiv.remove()
-    }, 3000)
+    localStorage.setItem("lastPasswordReset", today)
   }
 }
 
-// Add CSS animation
-const style = document.createElement("style")
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-`
-document.head.appendChild(style)
+checkPasswordReset()
 
-// Initialize auth manager
-new AuthManager()
+const form = document.getElementById("auth-form")
+const emailInput = document.getElementById("email")
+const passwordInput = document.getElementById("password")
+const errorMessage = document.getElementById("error-message")
+const toggleBtn = document.getElementById("toggle-mode")
+const formTitle = document.getElementById("form-title")
+const submitBtn = document.getElementById("submit-btn")
+const toggleText = document.getElementById("toggle-text")
+const passwordRequirements = document.getElementById("password-requirements")
+
+let isLoginMode = true
+
+// Password validation
+function validatePassword(password) {
+  const requirements = {
+    length: password.length >= 8,
+    number: /\d/.test(password),
+    uppercase: /[A-Z]/.test(password),
+    special: /[!@#$%^&*]/.test(password),
+  }
+
+  return requirements
+}
+
+function updatePasswordRequirements(password) {
+  const requirements = validatePassword(password)
+
+  document.getElementById("req-length").classList.toggle("valid", requirements.length)
+  document.getElementById("req-number").classList.toggle("valid", requirements.number)
+  document.getElementById("req-uppercase").classList.toggle("valid", requirements.uppercase)
+  document.getElementById("req-special").classList.toggle("valid", requirements.special)
+
+  return Object.values(requirements).every((req) => req)
+}
+
+passwordInput.addEventListener("focus", () => {
+  if (!isLoginMode) {
+    passwordRequirements.style.display = "block"
+  }
+})
+
+passwordInput.addEventListener("input", () => {
+  if (!isLoginMode) {
+    updatePasswordRequirements(passwordInput.value)
+  }
+})
+
+passwordInput.addEventListener("blur", () => {
+  setTimeout(() => {
+    passwordRequirements.style.display = "none"
+  }, 200)
+})
+
+// Toggle between login and signup
+toggleBtn.addEventListener("click", () => {
+  isLoginMode = !isLoginMode
+
+  if (isLoginMode) {
+    formTitle.textContent = "Log in to Spotify"
+    submitBtn.textContent = "Log In"
+    toggleText.textContent = "Don't have an account? Sign up"
+    passwordRequirements.style.display = "none"
+  } else {
+    formTitle.textContent = "Sign up for Spotify"
+    submitBtn.textContent = "Sign Up"
+    toggleText.textContent = "Already have an account? Log in"
+  }
+
+  errorMessage.textContent = ""
+  form.reset()
+})
+
+// Form submission
+form.addEventListener("submit", (e) => {
+  e.preventDefault()
+
+  const email = emailInput.value.trim()
+  const password = passwordInput.value
+
+  errorMessage.textContent = ""
+
+  if (!email || !password) {
+    errorMessage.textContent = "Please fill in all fields"
+    return
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailRegex.test(email)) {
+    errorMessage.textContent = "Please enter a valid email address"
+    return
+  }
+
+  const users = JSON.parse(localStorage.getItem("spotifyUsers") || "{}")
+
+  if (isLoginMode) {
+    // Login
+    if (!users[email]) {
+      errorMessage.textContent = "Account not found. Please sign up."
+      return
+    }
+
+    if (!users[email].password) {
+      errorMessage.textContent = "Password has been reset. Please sign up again."
+      return
+    }
+
+    if (users[email].password !== password) {
+      errorMessage.textContent = "Incorrect password"
+      return
+    }
+
+    // Successful login
+    localStorage.setItem("spotifyUser", email)
+    window.location.href = "/index.html"
+  } else {
+    // Sign up
+    const requirements = validatePassword(password)
+    const allRequirementsMet = Object.values(requirements).every((req) => req)
+
+    if (!allRequirementsMet) {
+      errorMessage.textContent = "Password does not meet all requirements"
+      passwordRequirements.style.display = "block"
+      updatePasswordRequirements(password)
+      return
+    }
+
+    if (users[email] && users[email].password) {
+      errorMessage.textContent = "Account already exists. Please log in."
+      return
+    }
+
+    // Create account
+    users[email] = {
+      password: password,
+      createdAt: new Date().toISOString(),
+    }
+
+    localStorage.setItem("spotifyUsers", JSON.stringify(users))
+    localStorage.setItem("spotifyUser", email)
+
+    console.log("[v0] Account created successfully for:", email)
+    window.location.href = "/index.html"
+  }
+})
