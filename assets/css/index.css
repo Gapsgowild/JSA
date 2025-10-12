@@ -118,12 +118,12 @@ body {
 }
 
 .page {
-  display: none;
+  display: none !important;
   padding: 24px 32px;
 }
 
 .page.active {
-  display: block;
+  display: block !important;
 }
 
 .page-header {

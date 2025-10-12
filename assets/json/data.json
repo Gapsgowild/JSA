@@ -1,3 +1,5 @@
+data
+
 {
   "name": "my-v0-project",
   "version": "0.1.0",
@@ -71,4 +73,10 @@
     "tw-animate-css": "1.3.3",
     "typescript": "^5"
   }
+}
+
+
+
+if (LocalStorage.getItem('data') == null) {
+    localStorage.setItem('data', JSON.stringify([data]));
 }
