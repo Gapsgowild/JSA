@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify Clone - Home</title>
     <link rel="icon" href="/spotify-icon.jpg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
 </head>
 <body>
     <div class="app">
@@ -24,6 +24,13 @@
                         <path d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732l7.5-4.33z"/>
                     </svg>
                     <span>Home</span>
+                </a>
+                
+                <a href="#" class="nav-item" data-page="list">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"/>
+                    </svg>
+                    <span>Track List</span>
                 </a>
                 
                 <a href="#" class="nav-item" data-page="upload">
@@ -66,6 +73,87 @@
                         </svg>
                         <p>No music uploaded yet</p>
                         <p class="empty-subtitle">Upload your first track to get started</p>
+                    </div>
+                </div>
+            </div>
+            
+             Track List Page 
+            <div id="list-page" class="page">
+                <header class="page-header">
+                    <h1>All Tracks</h1>
+                </header>
+                
+                <div class="track-list-container">
+                    <div class="track-list-header">
+                        <div class="track-list-col track-col-number">#</div>
+                        <div class="track-list-col track-col-title">Title</div>
+                        <div class="track-list-col track-col-date">Date Added</div>
+                        <div class="track-list-col track-col-duration">Duration</div>
+                        <div class="track-list-col track-col-actions"></div>
+                    </div>
+                    <div id="track-list-body" class="track-list-body">
+                         Tracks will be loaded here 
+                    </div>
+                </div>
+            </div>
+            
+             Track Detail Page 
+            <div id="detail-page" class="page">
+                <header class="page-header">
+                    <button class="back-btn" data-back="list">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.707 4.293a1 1 0 0 1 0 1.414L9.414 12l6.293 6.293a1 1 0 0 1-1.414 1.414l-7-7a1 1 0 0 1 0-1.414l7-7a1 1 0 0 1 1.414 0z"/>
+                        </svg>
+                    </button>
+                    <h1>Track Details</h1>
+                </header>
+                
+                <div class="detail-container">
+                    <div class="detail-hero">
+                        <div class="detail-image">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                            </svg>
+                        </div>
+                        <div class="detail-info">
+                            <span class="detail-type">Song</span>
+                            <h1 id="detail-title" class="detail-title">Track Name</h1>
+                            <div class="detail-meta">
+                                <span id="detail-artist">Unknown Artist</span>
+                                <span class="detail-separator">•</span>
+                                <span id="detail-date">Date</span>
+                                <span class="detail-separator">•</span>
+                                <span id="detail-duration">0:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-actions">
+                        <button class="btn-play-detail" id="play-detail-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7L8 5z"/>
+                            </svg>
+                        </button>
+                        <button class="btn-delete-detail" id="delete-detail-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                            </svg>
+                            Delete Track
+                        </button>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h2>Track Information</h2>
+                        <div class="detail-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">File Name</span>
+                                <span class="info-value" id="detail-filename">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Uploaded</span>
+                                <span class="info-value" id="detail-uploaded">-</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -144,7 +232,7 @@
             <div class="player-controls">
                 <button class="control-btn" id="prev-btn">
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M16 7v10l-7-5 7-5zM9 7v10H7V7h2z"/>
+                        <path d="M8 5v14l11-7L8 5z"/>
                     </svg>
                 </button>
                 <button class="control-btn play-btn" id="play-btn">
@@ -175,6 +263,6 @@
         </div>
     </div>
     
-    <script src="assets/js/index.js"></script>
+    <script src="/assets/js/index.js"></script>
 </body>
 </html>
