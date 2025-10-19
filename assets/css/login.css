@@ -6,7 +6,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif;
-  background: linear-gradient(135deg, #1e3a8a 0%, #1e1e1e 100%);
+  background: linear-gradient(#eeeeee 100%, #eeeeee 100%, #ffffff 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -21,10 +21,10 @@ body {
 }
 
 .login-box {
-  background: #000;
+  background: #000000;
   border-radius: 8px;
   padding: 48px;
-  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 60px rgba(255, 255, 255, 0.5);
 }
 
 .logo {
@@ -35,7 +35,7 @@ body {
 .logo svg {
   width: 48px;
   height: 48px;
-  color: #1db954;
+  color: #ffffff;
 }
 
 h1 {
@@ -59,8 +59,8 @@ label {
 input {
   width: 100%;
   padding: 14px;
-  background: #121212;
-  border: 1px solid #727272;
+  background: #ffffff;
+  border: 1px solid #ffffff;
   border-radius: 4px;
   color: #fff;
   font-size: 16px;
@@ -69,17 +69,17 @@ input {
 
 input:focus {
   outline: none;
-  border-color: #1db954;
+  border-color: #ff0000;
 }
 
 input::placeholder {
-  color: #727272;
+  color: #eeeeee;
 }
 
 .password-requirements {
   margin-top: 12px;
   padding: 12px;
-  background: #1a1a1a;
+  background: #b3b3b3;
   border-radius: 4px;
   font-size: 12px;
 }
@@ -113,7 +113,7 @@ input::placeholder {
 }
 
 .error-message {
-  color: #f15e6c;
+  color: #332224;
   font-size: 14px;
   margin-bottom: 16px;
   min-height: 20px;
@@ -122,8 +122,8 @@ input::placeholder {
 .btn-primary {
   width: 100%;
   padding: 14px;
-  background: #1db954;
-  color: #000;
+  background: #ffffff;
+  color: #000000;
   border: none;
   border-radius: 500px;
   font-size: 16px;
@@ -134,7 +134,7 @@ input::placeholder {
 }
 
 .btn-primary:hover {
-  background: #1ed760;
+  background: #ffffff;
   transform: scale(1.02);
 }
 
@@ -146,7 +146,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   margin: 32px 0;
-  color: #727272;
+  color: #ffffff;
 }
 
 .divider::before,
@@ -154,7 +154,7 @@ input::placeholder {
   content: "";
   flex: 1;
   height: 1px;
-  background: #727272;
+  background: #ffffff;
 }
 
 .divider span {
@@ -166,7 +166,7 @@ input::placeholder {
   width: 100%;
   padding: 14px;
   background: transparent;
-  color: #727272;
+  color: #ffffff;
   border: none;
   border-radius: 4px;
   font-size: 14px;
@@ -176,5 +176,5 @@ input::placeholder {
 }
 
 .btn-secondary:hover {
-  color: #fff;
+  color: #e9e2e2;
 }

@@ -37,7 +37,7 @@ body {
 .logo svg {
   width: 32px;
   height: 32px;
-  color: #1db954;
+  color: #282828;
 }
 
 .logo span {
@@ -112,7 +112,7 @@ body {
 /* Main Content */
 .main-content {
   flex: 1;
-  background: linear-gradient(180deg, #1e3a8a 0%, #121212 300px);
+  background: linear-gradient(180deg, #fafafa 0%, #121212 300px);
   overflow-y: auto;
   padding-bottom: 90px;
 }
@@ -306,7 +306,7 @@ body {
 
 .btn-upload {
   padding: 12px 32px;
-  background: #1db954;
+  background: #282828;
   color: #000;
   border: none;
   border-radius: 500px;
@@ -317,7 +317,7 @@ body {
 }
 
 .btn-upload:hover {
-  background: #1ed760;
+  background: #282828
   transform: scale(1.05);
 }
 
@@ -533,7 +533,7 @@ body {
 
 .progress-fill {
   height: 100%;
-  background: #1db954;
+  background: #282828;
   border-radius: 2px;
   width: 0%;
   pointer-events: none;
@@ -757,7 +757,7 @@ body {
 .btn-play-detail {
   width: 56px;
   height: 56px;
-  background: #1db954;
+  background: #282828;
   border: none;
   border-radius: 50%;
   color: #000;
@@ -769,7 +769,7 @@ body {
 }
 
 .btn-play-detail:hover {
-  background: #1ed760;
+  background: #282828;
   transform: scale(1.05);
 }
 
